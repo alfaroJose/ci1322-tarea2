@@ -1,5 +1,6 @@
 package ucr.ac.ecci.ci1322.tareaprogramada2.compiler;
 
+import org.apache.commons.lang3.StringUtils;
 import ucr.ac.ecci.ci1322.tareaprogramada2.Configuration;
 
 import java.io.FileInputStream;
@@ -69,19 +70,40 @@ public class Scanner {
                     if(line.contains("\"")){
                         //If the line has an ascii message splits the line in the message and the rest
                         message = line.substring(line.indexOf("\"")).trim();
-                        //Removes the ""
-                        message = message.substring(1,message.length()-1);
                         line = line.substring(0,line.indexOf("\"")).trim();
                     }
+
                     //Splits the line between the whitespaces
                     words = Arrays.asList(line.split("\\s+"));
-                    if(words.get(1).equals("byte"))
+                    if(words.get(1).equals("byte")) {
+                        if (!StringUtils.isNumeric(words.get(2)) && Integer.parseInt(words.get(2)) < 0) {
+                            System.out.println("(Error) Line " + lineCounter + " The value of the data type \"byte\" must be a positive integer or zero");
+                            correct = false;
+                            break;
+                        }
                         dataSize -= 8;
-                    else if (words.get(1).equals("half"))
+                    } else if (words.get(1).equals("half")) {
+                        if (!StringUtils.isNumeric(words.get(2)) && Integer.parseInt(words.get(2)) < 0) {
+                            System.out.println("(Error) Line " + lineCounter + " The value of the data type \"byte\" must be a positive integer or zero");
+                            correct = false;
+                            break;
+                        }
                         dataSize -= 16;
-                    else if (words.get(1).equals("word"))
+                    } else if (words.get(1).equals("word")) {
+                        if (!StringUtils.isNumeric(words.get(2)) && Integer.parseInt(words.get(2)) < 0) {
+                            System.out.println("(Error) Line " + lineCounter + " The value of the data type \"byte\" must be a positive integer or zero");
+                            correct = false;
+                            break;
+                        }
                         dataSize -= 32;
-                    else if (words.get(1).equals(".ascii")){
+                    } else if (words.get(1).equals(".ascii")){
+                        if(!message.contains("\"")){
+                            System.out.println("(Error) Line " + lineCounter + " The message for the ascii datatype must be enclosed in two \"");
+                            correct = false;
+                            break;
+                        }
+                        //Removes the ""
+                        message = message.substring(1,message.length()-1);
                         //Ignores the reserved characters
                         for(int i = 0; i < message.length(); i++)
                             if(message.charAt(i) != '\\')
@@ -105,6 +127,7 @@ public class Scanner {
 
 
                 //words = Arrays.asList(line.split("\\W+"));
+                //System.out.println(Arrays.toString(words.toArray()));
 
             }
 
