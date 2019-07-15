@@ -6,7 +6,7 @@ public class Parser {
 
     public Parser(){}
 
-    public void parse(Configuration configuration){
+    public void parse(Configuration configuration) throws Exception{
 
     }
 }

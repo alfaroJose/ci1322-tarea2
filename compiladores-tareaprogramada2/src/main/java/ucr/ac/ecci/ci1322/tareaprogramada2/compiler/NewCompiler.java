@@ -17,8 +17,10 @@ public class NewCompiler {
         codeGenerator = new CodeGenerator();
     }
 
-    public void compile(Configuration configuration){
+    public void compile(Configuration configuration) throws Exception{
         if(scanner.isFileCorrect(configuration))
             parser.parse(configuration);
+        else
+            System.out.println("(Error) Syntax incorrect");
     }
 }

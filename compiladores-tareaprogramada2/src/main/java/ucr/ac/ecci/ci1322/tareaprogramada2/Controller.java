@@ -12,7 +12,7 @@ public class Controller {
         newCompiler = new NewCompiler();
     }
 
-    public void run(){
+    public void run() throws Exception{
         newCompiler.compile(configuration);
     }
 }
