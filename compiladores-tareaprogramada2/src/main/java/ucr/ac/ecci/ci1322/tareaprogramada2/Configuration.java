@@ -8,7 +8,15 @@ public class Configuration {
     private String targetFilePath;
 
     public Configuration(){
-        askFileInfo();
+        //askFileInfo();
+        prueba();
+    }
+
+    private void prueba (){
+        sourceFileName = "myfile.txt";
+        sourceFilePath = "/Users/Andres/Desktop/myfile.txt";
+        targetFileName =  "res.txt";
+        targetFilePath = "C:\\Users\\Andres\\Desktop\\ci1322-tarea2\\compiladores-tareaprogramada2\\src\\main\\java\\ucr\\ac\\ecci\\ci1322\\tareaprogramada2\\compiler";
     }
 
     private void askFileInfo(){
