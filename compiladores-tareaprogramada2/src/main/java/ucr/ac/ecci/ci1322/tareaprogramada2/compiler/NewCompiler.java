@@ -19,8 +19,9 @@ public class NewCompiler {
 
     public void compile(Configuration configuration) throws Exception{
         if(scanner.isFileCorrect(configuration))
-            parser.parse(configuration);
+            //parser.parse(configuration);
+            System.out.println("Compiled successfully");
         else
-            System.out.println("(Error) Syntax incorrect");
+            System.out.println("(Error) Errors occurred while compiling " + configuration.getSourceFileName());
     }
 }

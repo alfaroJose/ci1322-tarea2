@@ -9,7 +9,8 @@ public class Configuration {
 
     public Configuration(){
         //askFileInfo();
-        prueba();
+        //prueba();
+        pruebaJose();
     }
 
     private void prueba (){
@@ -17,6 +18,10 @@ public class Configuration {
         sourceFilePath = "/Users/Andres/Desktop/myfile.txt";
         targetFileName =  "res.txt";
         targetFilePath = "C:\\Users\\Andres\\Desktop\\ci1322-tarea2\\compiladores-tareaprogramada2\\src\\main\\java\\ucr\\ac\\ecci\\ci1322\\tareaprogramada2\\compiler";
+    }
+
+    private void pruebaJose(){
+        sourceFilePath = "C:\\Users\\josea\\Desktop\\Tarea Programada II\\compiladores-tareaprogramada2\\programa mock.asm";
     }
 
     private void askFileInfo(){
