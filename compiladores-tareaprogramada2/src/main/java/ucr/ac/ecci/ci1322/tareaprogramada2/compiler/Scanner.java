@@ -7,7 +7,7 @@ public class Scanner {
     public Scanner(){}
 
     public boolean isFileCorrect(Configuration configuration)throws Exception{
-        boolean correct = false;
+        boolean correct = true;
         return correct;
     }
 }
