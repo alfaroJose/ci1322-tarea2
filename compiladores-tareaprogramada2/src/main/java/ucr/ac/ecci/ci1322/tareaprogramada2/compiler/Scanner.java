@@ -76,22 +76,22 @@ public class Scanner {
                     //Splits the line between the whitespaces
                     words = Arrays.asList(line.split("\\s+"));
                     if(words.get(1).equals("byte")) {
-                        if (!StringUtils.isNumeric(words.get(2)) && Integer.parseInt(words.get(2)) < 0) {
-                            System.out.println("(Error) Line " + lineCounter + " The value of the data type \"byte\" must be a positive integer or zero");
+                        if (!StringUtils.isNumeric(words.get(2))) {
+                            System.out.println("(Error) Line " + lineCounter + " The value of the data type \"byte\" must be a number");
                             correct = false;
                             break;
                         }
                         dataSize -= 8;
                     } else if (words.get(1).equals("half")) {
-                        if (!StringUtils.isNumeric(words.get(2)) && Integer.parseInt(words.get(2)) < 0) {
-                            System.out.println("(Error) Line " + lineCounter + " The value of the data type \"byte\" must be a positive integer or zero");
+                        if (!StringUtils.isNumeric(words.get(2))) {
+                            System.out.println("(Error) Line " + lineCounter + " The value of the data type \"byte\" must be a number");
                             correct = false;
                             break;
                         }
                         dataSize -= 16;
                     } else if (words.get(1).equals("word")) {
-                        if (!StringUtils.isNumeric(words.get(2)) && Integer.parseInt(words.get(2)) < 0) {
-                            System.out.println("(Error) Line " + lineCounter + " The value of the data type \"byte\" must be a positive integer or zero");
+                        if (!StringUtils.isNumeric(words.get(2))) {
+                            System.out.println("(Error) Line " + lineCounter + " The value of the data type \"byte\" must be a number");
                             correct = false;
                             break;
                         }
