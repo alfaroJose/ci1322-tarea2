@@ -4,7 +4,10 @@ import ucr.ac.ecci.ci1322.tareaprogramada2.Configuration;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 
 public class Parser {
 
