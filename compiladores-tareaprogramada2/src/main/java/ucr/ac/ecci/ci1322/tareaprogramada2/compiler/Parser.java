@@ -40,7 +40,7 @@ public class Parser {
                 //Remove beginning whitespace
                 String str = scanner.nextLine().trim();
 
-                /*When we arrive at code segment, apply data segment bit padding to make 512B
+                //When we arrive at code segment, apply data segment bit padding to make 512B
                 if(str.equals(".code")){
                     int padSize = 512;
                     if(!tables.getData().isEmpty()){
@@ -49,11 +49,11 @@ public class Parser {
                     }
                     resultString.append(StringUtils.rightPad("", padSize*8, '0'));
                     continue;
-                }*/
+                }
 
                 //Ignore lines irrelevant to parser
-                if (str.startsWith("#") || str.startsWith(".") ||   str.length()==0)
-                    continue; //Exit this iteration if line starts with # or .
+                if (str.startsWith("#") || str.startsWith(".") || str.length()==0)
+                    continue;
 
                 //Drop comments from line
                 if(str.contains("#"))
@@ -63,7 +63,6 @@ public class Parser {
                 Pattern p = Pattern.compile("^(\\w+):$");
                 Matcher m = p.matcher(str);
                 if (m.find()) {
-                    System.out.println(m.group(1));
                     if(!m.group(1).equals("main"))
                         tables.addTags(m.group(1),0);
                 }
@@ -73,13 +72,10 @@ public class Parser {
 
                 //Get message string within line and append binary ascii value
                 if(words.contains("ascii")){
-                    System.out.println(str);
-
-                    //String valueInQuotes = StringUtils.substringBetween(str , "\"", "\"") + "\r\0";
+                    //Escape characters format correction
                     String valueInQuotes = StringUtils.substringBetween(str , "\"", "\"");
                     valueInQuotes = valueInQuotes.replace("\\n", "\r");
                     valueInQuotes = valueInQuotes.replace("\\0", "\0");
-                    System.out.println(valueInQuotes);
 
                     int byteCount = 0;
 
@@ -95,8 +91,7 @@ public class Parser {
                                 val <<= 1;
                             }
                         }
-                        System.out.println(binary);
-                        System.out.println(byteCount);
+                        resultString.append(binary);
                     }
 
                     tables.addData(words.get(0), byteCount);
@@ -118,7 +113,6 @@ public class Parser {
                     int intVal = Integer.parseInt(words.get(2));
                     resultString.append(StringUtils.leftPad(Integer.toBinaryString(intVal), 32, '0'));
                 }
-
 
                 //Code segment processing
                 if (tables.getInstructions().containsKey(words.get(0))) {
@@ -164,23 +158,12 @@ public class Parser {
                     for(String arrstr : words) {
                         if (tables.getTags().containsKey(arrstr)) {
                             int offset = -tables.getTags().get(arrstr);
-                            System.out.println(offset);
                             instString.append(StringUtils.right(Integer.toBinaryString(offset+1), 16));
-                            System.out.println(instString);
                         }
                     }
 
-
-                    System.out.println(Arrays.toString(words.toArray()));
-
-                    System.out.println(instString);
-                    System.out.println(instString.length());
-
                     //Pad instruction to size 32 bits
                     String paddedStr = StringUtils.rightPad(instString.toString(), 32, '0');
-                    System.out.println(paddedStr);
-                    System.out.println(paddedStr.length());
-
                     resultString.append(paddedStr);
                 }
             }
