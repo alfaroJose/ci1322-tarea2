@@ -9,8 +9,8 @@ public class Configuration {
 
     public Configuration(){
         //askFileInfo();
-        //prueba();
-        pruebaJose();
+        prueba();
+        //pruebaJose();
     }
 
     private void prueba (){

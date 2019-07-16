@@ -23,7 +23,7 @@ public class Parser {
         resultString = new StringBuilder();
     }
 
-    public void parse(Configuration configuration) throws Exception{
+    public StringBuilder parse(Configuration configuration) throws Exception{
         try {
             Scanner scanner = new Scanner(new File(configuration.getSourceFilePath()));
 
@@ -67,7 +67,10 @@ public class Parser {
                 if(words.contains("ascii")){
                     System.out.println(str);
 
+                    //String valueInQuotes = StringUtils.substringBetween(str , "\"", "\"") + "\r\0";
                     String valueInQuotes = StringUtils.substringBetween(str , "\"", "\"");
+                    valueInQuotes = valueInQuotes.replace("\\n", "\r");
+                    valueInQuotes = valueInQuotes.replace("\\0", "\0");
                     System.out.println(valueInQuotes);
 
                     int byteCount = 0;
@@ -177,5 +180,7 @@ public class Parser {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        return resultString;
     }
 }
