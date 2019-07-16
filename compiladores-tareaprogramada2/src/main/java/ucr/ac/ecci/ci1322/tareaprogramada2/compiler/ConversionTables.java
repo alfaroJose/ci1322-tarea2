@@ -1,13 +1,17 @@
 package ucr.ac.ecci.ci1322.tareaprogramada2.compiler;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class ConversionTables {
 
     private HashMap<String, String> registers = new HashMap<String, String>();
     private HashMap<String, String> instructions = new HashMap<String, String>();
-    private HashMap<String, String> data = new HashMap<String, String>();
-    private HashMap<String, String> tags = new HashMap<String, String>();
+
+    //LinkedHashMap for preserving insertion order
+    private LinkedHashMap<String, Integer> data = new LinkedHashMap<String, Integer>();
+
+    private HashMap<String, Integer> tags = new HashMap<String, Integer>();
 
     public ConversionTables (){
 
@@ -119,5 +123,29 @@ public class ConversionTables {
         instructions.put("ret", "110101");
         instructions.put("syscall", "110110");
 
+    }
+
+    public HashMap<String, String> getInstructions() {
+        return instructions;
+    }
+
+    public HashMap<String, String> getRegisters() {
+        return registers;
+    }
+
+    public LinkedHashMap<String, Integer> getData() {
+        return data;
+    }
+
+    public void addData(String key, int value) {
+        data.put(key,value);
+    }
+
+    public HashMap<String, Integer> getTags() {
+        return tags;
+    }
+
+    public void addTags(String key, int value) {
+        tags.put(key,value);
     }
 }
