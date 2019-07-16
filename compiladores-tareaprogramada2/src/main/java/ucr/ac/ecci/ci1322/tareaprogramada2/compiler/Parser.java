@@ -12,7 +12,9 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * Class that parses the code into a binary string
+ */
 public class Parser {
 
     private ConversionTables tables;
@@ -23,6 +25,12 @@ public class Parser {
         resultString = new StringBuilder();
     }
 
+    /**
+     * Method that parses the source language file into a binary representation based on their equivalent
+     * in the conversion tables
+     * @param configuration the file configuration selected by the user
+     * @return StringBuilder with the representation in binary of the source language file
+     */
     public StringBuilder parse(Configuration configuration) throws Exception{
         try {
             Scanner scanner = new Scanner(new File(configuration.getSourceFilePath()));

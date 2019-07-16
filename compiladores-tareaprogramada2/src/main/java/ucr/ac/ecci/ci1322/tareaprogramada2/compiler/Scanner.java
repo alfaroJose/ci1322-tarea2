@@ -9,6 +9,9 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class that checks the source file to find if its correct. Yields errors of syntax
+ */
 public class Scanner {
 
     private int dataSize;
@@ -21,6 +24,11 @@ public class Scanner {
         symbolTable = new SymbolTable();
     }
 
+    /**
+     * Method that checks if the program in the source file is correct to parse it
+     * @param configuration the information of the source and target files
+     * @return true if its correct, false otherwise.
+     */
     public boolean isFileCorrect(Configuration configuration)throws Exception{
         boolean correct = true;
 
@@ -138,6 +146,13 @@ public class Scanner {
                         correct = false;
                         break;
                     }
+                }
+
+                //Check if the data segment dont overloads it's capacity
+                if(dataSize < 0){
+                    System.out.println("(Error) Data segment overloads past it's 512 bytes cap");
+                    correct = false;
+                    break;
                 }
 
                 //Process the code segment

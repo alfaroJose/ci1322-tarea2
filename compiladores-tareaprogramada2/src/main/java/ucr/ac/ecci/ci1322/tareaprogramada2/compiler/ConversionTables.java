@@ -3,6 +3,9 @@ package ucr.ac.ecci.ci1322.tareaprogramada2.compiler;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
+/**
+ * Class that creates HasMaps to store the binary values of the multiple identifiers present in the source language
+ */
 public class ConversionTables {
 
     private HashMap<String, String> registers;
@@ -14,10 +17,10 @@ public class ConversionTables {
 
     public ConversionTables (){
 
-        registers = new HashMap<String, String>();
-        instructions = new HashMap<String, String>();
-        data = new LinkedHashMap<String, Integer>();
-        tags = new HashMap<String, Integer>();
+        registers = new HashMap<>();
+        instructions = new HashMap<>();
+        data = new LinkedHashMap<>();
+        tags = new HashMap<>();
 
         //Registers
 

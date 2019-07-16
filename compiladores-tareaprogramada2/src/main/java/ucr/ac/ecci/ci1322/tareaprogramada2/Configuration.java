@@ -1,5 +1,8 @@
 package ucr.ac.ecci.ci1322.tareaprogramada2;
 
+/**
+ * Class that ask for the file configuration and stores it
+ */
 public class Configuration {
 
     private String sourceFileName;
@@ -8,9 +11,7 @@ public class Configuration {
     private String targetFilePath;
 
     public Configuration(){
-        //askFileInfo();
-        prueba();
-        //pruebaJose();
+        askFileInfo();
     }
 
     private void prueba (){
@@ -20,10 +21,9 @@ public class Configuration {
         targetFilePath = "C:\\Users\\Andres\\Desktop\\ci1322-tarea2\\compiladores-tareaprogramada2\\src\\main\\java\\ucr\\ac\\ecci\\ci1322\\tareaprogramada2\\compiler";
     }
 
-    private void pruebaJose(){
-        sourceFilePath = "C:\\Users\\josea\\Desktop\\Tarea Programada II\\compiladores-tareaprogramada2\\programa mock.asm";
-    }
-
+    /**
+     * Method that ask for the file information that the user will be using
+     */
     private void askFileInfo(){
         java.util.Scanner scan = new java.util.Scanner(System.in);
         System.out.println("Insert the file name of the source program: ");
