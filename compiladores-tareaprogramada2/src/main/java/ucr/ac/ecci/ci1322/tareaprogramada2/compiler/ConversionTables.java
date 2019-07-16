@@ -5,15 +5,19 @@ import java.util.LinkedHashMap;
 
 public class ConversionTables {
 
-    private HashMap<String, String> registers = new HashMap<String, String>();
-    private HashMap<String, String> instructions = new HashMap<String, String>();
+    private HashMap<String, String> registers;
+    private HashMap<String, String> instructions;
 
     //LinkedHashMap for preserving insertion order
-    private LinkedHashMap<String, Integer> data = new LinkedHashMap<String, Integer>();
-
-    private HashMap<String, Integer> tags = new HashMap<String, Integer>();
+    private LinkedHashMap<String, Integer> data;
+    private HashMap<String, Integer> tags;
 
     public ConversionTables (){
+
+        registers = new HashMap<String, String>();
+        instructions = new HashMap<String, String>();
+        data = new LinkedHashMap<String, Integer>();
+        tags = new HashMap<String, Integer>();
 
         //Registers
 
